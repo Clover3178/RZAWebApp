@@ -1,0 +1,85 @@
+﻿@model IEnumerable<RZAWebApp.Models.Articles>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+@if (User.IsInRole("Admin") || (User.IsInRole("Writer")))
+{
+    <p>
+        <a asp-action="Create">Create New Article</a>
+    </p>
+}
+
+<form asp-action="Index" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Find by tag: <select name="SearchString" value="@ViewData["CurrentFilter"]">
+                <option value="Blog">Blog</option>
+                <option value="Education">Education</option>
+            </select>
+            <input type="submit" value="Search" class="btn btn-default" /> |
+            <a asp-action="Index">Back to Full List</a>
+        </p>
+    </div>
+</form>
+
+<table class="table" id="IndexTable">
+    <thead>
+        <tr>
+            <th>
+                Title
+            </th>
+            <th>
+                Preview
+            </th>
+            <th>
+                Author
+            </th>
+            <th>
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["DateSortParam"]">Publication Date</a>
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tags)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ArticleTitle)
+            </td>
+            <td>
+                    <p style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; width: 600px;">@Html.DisplayFor(modelItem => item.ArticleContent)</p>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WrittenBy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreationDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tags)
+            </td>
+                @if (User.IsInRole("Admin") || (User.IsInRole("Writer")))
+                {
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.ArticleID">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.ArticleID">View</a> |
+                    <a asp-action="Delete" asp-route-id="@item.ArticleID">Delete</a>
+                    </td>
+                }
+
+                else
+                {
+                    <td>
+                        <a asp-action="Details" asp-route-id="@item.ArticleID">View</a>
+                    </td>
+                }
+        </tr>
+}
+    </tbody>
+</table>

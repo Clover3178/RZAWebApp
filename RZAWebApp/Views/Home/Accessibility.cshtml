@@ -1,0 +1,30 @@
+﻿@{
+    ViewData["Title"] = "Accessibility";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div style="font-family: OpenDyslexic">
+
+<p>High Contrast</p>
+
+<button type="button"
+    onclick="document.cookie = 'HighContrast=true; path=/'; location.reload()">Enable High Contrast</button>
+
+<button type="button"
+    onclick="document.cookie = 'HighContrast=false; path=/'; location.reload()">Disable High Contrast</button>
+
+
+
+<p>Dyslexia-friendly Font</p>
+
+<button type="button"
+        onclick="document.cookie = 'DyslexicFont=true; path=/'; location.reload()">
+    Enable Dyslexia-friendly Font
+</button>
+
+<button type="button"
+        onclick="document.cookie = 'DyslexicFont=false; path=/'; location.reload()">
+    Disable Dyslexia-friendly Font
+</button>
+</div>

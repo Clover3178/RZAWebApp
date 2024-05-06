@@ -1,0 +1,10 @@
+﻿@model RZAWebApp.Models.Bookings
+@using Microsoft.AspNetCore.Identity
+
+@inject UserManager<IdentityUser> UserManager
+
+<div class="form-group">
+    <label asp-for="ZooDate" class="control-label">When would you like to visit the zoo?</label>
+    <input asp-for="ZooDate" class="form-control" min="@DateTime.Now.ToString("yyyy-MM-dd")" max="@DateTime.Now.AddYears(1).ToString("yyyy-MM-dd")" required />
+    <span asp-validation-for="ZooDate" class="text-danger"></span>
+</div>

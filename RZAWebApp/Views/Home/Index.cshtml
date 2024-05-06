@@ -1,0 +1,41 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<h1>Welcome to Riget Zoo Adventures!</h1>
+
+<div class="flex-container-home">
+    <div>
+        <h1>Who are we?</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    </div>
+
+    <div>
+        <h1>How can I help?</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    </div>
+
+    <div>
+        <h1>How can I visit?</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    </div>
+</div>
+
+<h1 style="margin-top:50px;">Want more information? Click the images below to learn more!</h1>
+<div class="flex-container-home">
+    <div>
+        <a asp-area="" asp-controller="WebContent" asp-action="Articles">
+            <img src="media/images/Red Panda.jpg" width="300" height="300" style="object-fit:cover" alt="A picture of a red panda in a tree. Links to the articles page."/>
+        </a>
+        <br />
+        <strong>Read some articles about the zoo!</strong>
+    </div>
+
+    <div>
+        <a asp-area="" asp-controller="WebContent" asp-action="Map">
+            <img src="media/images/Whipsnade map.jpg" width="300" height="300" style="object-fit:cover" alt="A picture of the zoo map. Links to the map page."/>
+        </a>
+        <br />
+        <strong>View a map of the zoo!</strong>
+    </div>
+</div>

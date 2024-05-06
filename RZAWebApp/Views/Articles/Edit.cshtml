@@ -1,0 +1,63 @@
+﻿@model RZAWebApp.Models.Articles
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Articles</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4" style="width: 1320px">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ArticleID" />
+            <div class="form-group">
+                <label asp-for="ArticleTitle" class="control-label"></label>
+                <input asp-for="ArticleTitle" class="form-control" />
+                <span asp-validation-for="ArticleTitle" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ArticleContent" class="control-label"></label>
+                <textarea asp-for="ArticleContent" class="form-control" rows="10" cols="50"></textarea>
+                <span asp-validation-for="ArticleContent" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WrittenBy" class="control-label"></label>
+                <input asp-for="WrittenBy" class="form-control" />
+                <span asp-validation-for="WrittenBy" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CreationDate" class="control-label"></label>
+                <input asp-for="CreationDate" class="form-control" />
+                <span asp-validation-for="CreationDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ImageID" class="control-label"></label>
+                <input asp-for="ImageID" class="form-control" />
+                <span asp-validation-for="ImageID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Tags" class="control-label"></label>
+                <select asp-for="Tags" class="form-control">
+                    <option value="Test">Test</option>
+                    <option value="Blog">Blog</option>
+                    <option value="Education">Education</option>
+                </select>
+                <span asp-validation-for="Tags" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

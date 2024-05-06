@@ -1,0 +1,78 @@
+﻿@model IEnumerable<RZAWebApp.Models.Bookings>
+
+
+@{
+    ViewData["Title"] = "Admin Index";
+}
+
+<h1>Admin Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table" id="IndexTable">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.BookingID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ZooBooked)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ZooDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HotelBooked)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HotelDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HotelRoomType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HotelBookedUntil)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                 @Html.DisplayFor(modelItem => item.BookingID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ZooBooked)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ZooDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HotelBooked)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HotelDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HotelRoomType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HotelBookedUntil)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.BookingID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.BookingID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.BookingID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

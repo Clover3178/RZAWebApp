@@ -1,0 +1,63 @@
+﻿@model RZAWebApp.Models.Bookings
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Bookings</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="UserID" class="control-label"></label>
+                <input asp-for="UserID" class="form-control" />
+                <span asp-validation-for="UserID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ZooBooked" class="control-label"></label>
+                <input asp-for="ZooBooked" class="form-control" />
+                <span asp-validation-for="ZooBooked" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ZooDate" class="control-label"></label>
+                <input asp-for="ZooDate" class="form-control" />
+                <span asp-validation-for="ZooDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HotelBooked" class="control-label"></label>
+                <input asp-for="HotelBooked" class="form-control" />
+                <span asp-validation-for="HotelBooked" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HotelDate" class="control-label"></label>
+                <input asp-for="HotelDate" class="form-control" />
+                <span asp-validation-for="HotelDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HotelRoomType" class="control-label"></label>
+                <input asp-for="HotelRoomType" class="form-control" />
+                <span asp-validation-for="HotelRoomType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HotelBookedUntil" class="control-label"></label>
+                <input asp-for="HotelBookedUntil" class="form-control" />
+                <span asp-validation-for="HotelBookedUntil" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,24 @@
+﻿@model RZAWebApp.Models.Bookings
+@using Microsoft.AspNetCore.Identity
+
+@inject UserManager<IdentityUser> UserManager
+
+    <div class="form-group">
+        <label asp-for="HotelDate" class="control-label">Hotel Check-In Date</label>
+        <input asp-for="HotelDate" class="form-control" min="@DateTime.Now.ToString("yyyy-MM-dd")" max="@DateTime.Now.AddYears(1).ToString("yyyy-MM-dd")" required />
+        <span asp-validation-for="HotelDate" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="HotelRoomType" class="control-label">Hotel Room Type</label>
+        <select asp-for="HotelRoomType" class="form-control" required>
+            <option value="large">Large</option>
+            <option value="medium">Medium</option>
+            <option value="small">Small</option>
+        </select>
+        <span asp-validation-for="HotelRoomType" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="HotelBookedUntil" class="control-label">Hotel Check-Out Date</label>
+        <input asp-for="HotelBookedUntil" class="form-control" min="@DateTime.Now.ToString("yyyy-MM-dd")" max="@DateTime.Now.AddYears(1).ToString("yyyy-MM-dd")" required />
+        <span asp-validation-for="HotelBookedUntil" class="text-danger"></span>
+    </div>

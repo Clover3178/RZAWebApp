@@ -1,0 +1,53 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+
+@{
+    ViewData["Title"] = "Booking";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+@if (!SignInManager.IsSignedIn(User))
+{
+    <a>You must be logged in to create a booking. Press the button below to log in.</a>
+    <div class="flex-container-center"><a class="btn-primary nav-link text-light login-box" href="/Identity/Account/Login">Log In</a></div>
+}
+
+else
+{
+<div>
+    <div>
+        <section>
+
+            <div class="flex-container-center">
+                <div style="margin: 0px 20px">
+                    <p class="border-p">Click the button below to book a visit to the zoo.</p>
+                    <div class="flex-container-center"><a class="btn-primary nav-link text-light login-box" asp-controller="Bookings" asp-action="BookZoo">Book a zoo visit</a></div>
+                </div>
+
+
+                <div style="margin: 0px 20px">
+                    <p class="border-p">Click the button below to book a room at the hotel.</p>
+                        <div class="flex-container-center"><a class="btn-primary nav-link text-light login-box" asp-controller="Bookings" asp-action="BookHotel">Book a hotel room</a></div>
+                </div>
+
+
+                <div style="margin: 0px 20px">
+                    <p class="border-p">Click the button below to book both a visit too the zoo and a room at the hotel.</p>
+                        <div class="flex-container-center"><a class="btn-primary nav-link text-light login-box" asp-controller="Bookings" asp-action="BookHotelAndZoo">Book a zoo visit and a hotel room</a></div>
+                </div>
+
+
+                <div style="margin: 0px 20px">
+                    <p class="border-p">Click the button below to check your bookings.</p>
+                        <div class="flex-container-center"><a class="btn-primary nav-link text-light login-box" asp-controller="Bookings" asp-action="Index">Check bookings</a></div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+}

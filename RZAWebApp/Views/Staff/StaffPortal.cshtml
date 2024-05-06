@@ -1,0 +1,32 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject UserManager<IdentityUser> UserManager
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Riget Zoo Adventures</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/RZAWebApp.styles.css" asp-append-version="true" />
+</head>
+
+<p>Welcome to the staff portal!</p>
+
+@if (User.IsInRole("Admin"))
+{
+    <p>Admin Functions</p>
+
+    <a asp-controller="AdminBookings" asp-action="Index">Manage Bookings</a>
+    <br />
+    <br />
+    <br />
+}
+
+@if (User.IsInRole("Admin") || (User.IsInRole("Writer")))
+{
+    <p>Writer Functions</p>
+
+    <a asp-controller="Articles" asp-action="Create">Write a new article</a>
+    <br />
+    <br />
+    <br />
+}

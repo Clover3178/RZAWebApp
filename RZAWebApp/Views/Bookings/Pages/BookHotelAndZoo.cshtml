@@ -1,0 +1,43 @@
+﻿@model RZAWebApp.Models.Bookings
+@using Microsoft.AspNetCore.Identity
+
+@inject UserManager<IdentityUser> UserManager
+@inject SignInManager<IdentityUser> SignInManager
+
+@if (!SignInManager.IsSignedIn(User))
+{
+    <a>You must be logged in to create a booking. Press the button below to log in.</a>
+    <div class="flex-container-center"><a class="btn-primary nav-link text-light login-box" href="/Identity/Account/Login">Log In</a></div>
+}
+
+else
+{
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <input asp-for="ZooBooked" type="hidden" value="True" />
+                <span asp-validation-for="ZooBooked" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input asp-for="HotelBooked" type="hidden" value="True" />
+                <span asp-validation-for="HotelBooked" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input asp-for="UserID" type="hidden" value="@User.Identity?.Name" />
+            </div>
+
+            <partial name="Booking/_ZooPartial" />
+            <partial name="Booking/_HotelPartial" />
+
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+}

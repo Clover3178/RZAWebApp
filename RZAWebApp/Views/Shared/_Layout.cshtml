@@ -1,0 +1,135 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Riget Zoo Adventures</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/RZAWebApp.styles.css" asp-append-version="true" />
+</head>
+<body id="body">
+    <header>
+        <nav id="navbar" class="navbar navbar-expand-sm navbar-toggleable-sm border-bottom box-shadow mb-3">
+            <div class="container-fluid" id="HighContrast">
+                <a class="navbar-brand HighContrastElement" asp-area="" asp-controller="Home" asp-action="Index">Riget Zoo Adventures</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1" style="font-size: 30px">
+                        <li class="nav-item">
+                            <a class="nav-link HighContrastElement" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+
+
+                        <li class="nav-item">
+                            <a class="nav-link HighContrastElement" asp-area="" asp-controller="WebContent" asp-action="Articles">Articles</a>
+                        </li>
+
+
+                        <li class="nav-item">
+                            <a class="nav-link HighContrastElement" asp-area="" asp-controller="WebContent" asp-action="Map">Map</a>
+                        </li>
+
+
+                        <li class="nav-item">
+                            <a class="nav-link HighContrastElement" asp-area="" asp-controller="Bookings" asp-action="BookingsHome">Booking</a>
+                        </li>
+                    </ul>
+                </div>
+                <partial name="_LoginPartial" />
+            </div>
+        </nav>
+    </header>
+    <div class="container" id="MainContent">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer">
+        <div class="flex-container-footer">
+            <div><a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Accessibility" style="font-family: OpenDyslexic">Accessibility</a></div>
+            <div><a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="TermsAndConditions">Terms and Conditions</a></div>
+            <div><a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy Policy</a></div>
+            <div><a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Contact">Contact Us</a></div>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    <script>
+
+        const getCookieValue = (name) => (
+            document.cookie.match('(^|;)\\s*' + name + '\\s*=\\s*([^;]+)')?.pop() || ''
+        )
+
+        let DyslexicFont = getCookieValue("DyslexicFont")
+
+        if (DyslexicFont == "true") {
+            document.getElementById("body").style.fontFamily = "OpenDyslexic"
+        }
+
+
+        let HighContrast = getCookieValue("HighContrast")
+
+        if (HighContrast == "true") { /* High Contrast Enabled */
+
+            document.getElementById("body").style.backgroundColor = "black"
+            document.getElementById("body").style.color = "white"
+
+            const element = document.getElementById("HighContrast");
+            const nodes = element.getElementsByClassName("HighContrastElement");
+
+            for (let i = 0; i < nodes.length; i++) {
+                nodes[i].style.color = "white";
+            }
+
+            const tableElement = document.getElementById("IndexTable");
+            const tableHeads = tableElement.getElementsByTagName("th");
+            const tableData = tableElement.getElementsByTagName("td");
+
+            for (let i = 0; i < tableHeads.length; i++) {
+                tableHeads[i].style.color = "white";
+            }
+
+            for (let i = 0; i < tableData.length; i++) {
+                tableData[i].style.color = "white";
+            }
+
+
+
+        }
+        else { /* High Contrast Disabled */
+            document.getElementById("navbar").style.backgroundColor = "peachpuff"
+            document.getElementById("body").style.backgroundColor = "white"
+
+            const element = document.getElementById("body");
+            const nodes = element.getElementsByClassName("HighContrastElement");
+
+            for (let i = 0; i < nodes.length; i++) {
+                nodes[i].style.color = "black";
+            }
+
+
+            const tableElement = document.getElementById("IndexTable");
+            const tableHeads = tableElement.getElementsByTagName("th");
+            const tableData = tableElement.getElementsByTagName("td");
+
+            for (let i = 0; i < tableHeads.length; i++) {
+                tableHeads[i].style.color = "black";
+            }
+
+            for (let i = 0; i < tableData.length; i++) {
+                tableData[i].style.color = "black";
+            }
+        }
+
+
+    </script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

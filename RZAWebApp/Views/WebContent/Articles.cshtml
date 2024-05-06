@@ -1,0 +1,44 @@
+﻿@{
+    ViewData["Title"] = "Articles";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<h1 style="margin-top:50px;">Here to read? Click the images below!</h1>
+<div class="flex-container-home">
+    <div>
+        <a href="/Articles/Details/1"><img src="/media/images/Skull.jpg" width="300" height="300" style="object-fit:cover" /></a>
+        <br />
+        <a href="/Articles/Details/5"><strong>Article 1</strong></a>
+    </div>
+
+    <div>
+        <a href="/Articles/Details/2"><img src="/media/images/Bird Display.jpg" width="300" height="300" style="object-fit:cover" /></a>
+        <br />
+        <a href="/Articles/Details/5"><strong>Article 2</strong></a>
+    </div>
+    <div class="flex-container">
+        <a>Interested? Click the button below to view all our articles!</a>
+        <a class="btn-primary nav-link text-light" href="/Articles">Read more!</a>
+    </div>
+</div>
+
+<h1 style="margin-top:50px;">Here for an educational visit? Click the articles below for helpful material!</h1>
+<div class="flex-container-home">
+    <div>
+        <a href="/Articles/Details/4"><img src="/media/images/Skull.jpg" width="300" height="300" style="object-fit:cover" /></a>
+        <br />
+        <a href="/Articles/Details/5"><strong>Educational article 1</strong></a>
+    </div>
+
+    <div>
+        <a href="/Articles/Details/5"><img src="/media/images/Bird Display.jpg" width="300" height="300" style="object-fit:cover" /></a>
+        <br />
+        <a href="/Articles/Details/5"><strong>Educational article 2</strong></a>
+    </div>
+
+    <div class="flex-container">
+        <a>Interested? Click the button below to view all our educational material!</a>
+        <a class="btn-primary nav-link text-light" href="/Articles?SearchString=Education">Read more!</a>
+    </div>
+</div>
